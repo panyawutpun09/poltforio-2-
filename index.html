@@ -2,10 +2,14 @@
 <html lang="th">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Portfolio | ปัญญาวุฒิ ไสยศาสตร์</title>
+
 
     <style>
 
@@ -19,308 +23,118 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
 
         body {
-            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+
+            font-family:
+                "Segoe UI",
+                Tahoma,
+                Arial,
+                sans-serif;
+
             min-height: 100vh;
-            color: #222;
-            overflow-x: hidden;
 
             background:
-                radial-gradient(circle at 15% 20%, #d8f5ff 0%, transparent 30%),
-                radial-gradient(circle at 85% 25%, #eadcff 0%, transparent 30%),
-                radial-gradient(circle at 50% 90%, #ffe0f2 0%, transparent 30%),
-                #f8faff;
+                linear-gradient(
+                    135deg,
+                    #eafff1,
+                    #f8fffb
+                );
+
+            color: #193b2b;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px 15px;
         }
 
 
         /* =========================
-           พื้นหลังวงกลม
+           BACKGROUND
         ========================= */
 
-        .bg-circle {
+        .bg1,
+        .bg2 {
+
             position: fixed;
+
             border-radius: 50%;
+
             z-index: -1;
-            filter: blur(2px);
-            opacity: 0.55;
-            animation: float 7s ease-in-out infinite;
+
+            pointer-events: none;
         }
 
-        .circle1 {
-            width: 250px;
-            height: 250px;
-            background: #8be9ff;
-            top: 100px;
-            left: -100px;
+
+        .bg1 {
+
+            width: 350px;
+
+            height: 350px;
+
+            background: #c9f7d9;
+
+            top: -150px;
+
+            left: -120px;
         }
 
-        .circle2 {
-            width: 300px;
-            height: 300px;
-            background: #c6a5ff;
-            right: -120px;
-            top: 250px;
-            animation-delay: 2s;
+
+        .bg2 {
+
+            width: 400px;
+
+            height: 400px;
+
+            background: #dcfae7;
+
+            bottom: -180px;
+
+            right: -150px;
         }
 
-        .circle3 {
-            width: 180px;
-            height: 180px;
-            background: #ffb6df;
-            bottom: 30px;
-            left: 40%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-30px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-
-        }
 
 
         /* =========================
-           HEADER
+           MAIN CARD
         ========================= */
 
-        header {
-            position: fixed;
-
-            top: 0;
-            left: 0;
+        .card {
 
             width: 100%;
 
-            z-index: 1000;
+            max-width: 850px;
 
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255,255,255,0.95);
 
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.8);
-        }
-
-
-        /* =========================
-           NAV
-        ========================= */
-
-        nav {
-
-            max-width: 1200px;
-
-            min-height: 75px;
-
-            margin: auto;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 0 25px;
-
-            position: relative;
-        }
-
-
-        /* LOGO */
-
-        .logo {
-
-            position: absolute;
-
-            left: 25px;
-
-            font-size: 24px;
-
-            font-weight: 800;
-
-            letter-spacing: 2px;
-
-            color: #6c5ce7;
-        }
-
-        .logo span {
-            color: #ff6bcb;
-        }
-
-
-        /* =========================
-           MENU 5 ลิงก์
-        ========================= */
-
-        nav ul {
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            list-style: none;
-
-            gap: 10px;
-        }
-
-
-        nav ul li a {
-
-            text-decoration: none;
-
-            color: #444;
-
-            font-size: 15px;
-
-            font-weight: 600;
-
-            padding: 11px 17px;
+            border: 1px solid #bfe9cf;
 
             border-radius: 30px;
 
-            transition: all 0.3s ease;
-        }
-
-
-        nav ul li a:hover {
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #6c5ce7,
-                    #a66cff
-                );
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 8px 20px rgba(108,92,231,0.3);
-        }
-
-
-        nav ul li a.active {
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #6c5ce7,
-                    #a66cff
-                );
-
-            box-shadow:
-                0 8px 20px rgba(108,92,231,0.25);
-        }
-
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-
-            min-height: 100vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 120px 20px 70px;
-        }
-
-
-        /* =========================
-           PORTFOLIO CARD
-        ========================= */
-
-        .portfolio-card {
-
-            width: 100%;
-
-            max-width: 700px;
+            padding: 25px 45px 55px;
 
             text-align: center;
 
-            padding: 50px 55px;
-
-            border-radius: 35px;
-
-            background: rgba(255,255,255,0.75);
-
-            backdrop-filter: blur(20px);
-
-            border: 1px solid rgba(255,255,255,0.9);
-
             box-shadow:
-                0 30px 70px rgba(65,45,120,0.15),
-                0 5px 20px rgba(0,0,0,0.05);
+                0 25px 70px rgba(22,110,60,0.12);
 
-            position: relative;
-
-            overflow: hidden;
-
-            animation: cardAppear 1s ease;
+            animation: cardShow 0.7s ease;
         }
 
 
-        /* เส้นสีด้านบนการ์ด */
-
-        .portfolio-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-
-            height: 6px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #6c5ce7,
-                    #74b9ff,
-                    #ff6bcb
-                );
-        }
-
-
-        /* =========================
-           Animation Card
-        ========================= */
-
-        @keyframes cardAppear {
+        @keyframes cardShow {
 
             from {
 
                 opacity: 0;
 
                 transform:
-                    translateY(40px)
-                    scale(0.96);
+                    translateY(30px)
+                    scale(0.98);
             }
 
             to {
@@ -331,164 +145,216 @@
                     translateY(0)
                     scale(1);
             }
-
         }
+
 
 
         /* =========================
-           รูปโปรไฟล์
+           MENU INSIDE CARD
         ========================= */
 
-        .profile-image {
+        .menu {
 
             display: flex;
 
             justify-content: center;
-
-            margin-bottom: 25px;
-        }
-
-
-        .image-circle {
-
-            width: 145px;
-
-            height: 145px;
-
-            display: flex;
 
             align-items: center;
 
+            margin-bottom: 45px;
+
+            padding: 8px;
+
+            border-radius: 50px;
+
+            background: #f5fff8;
+
+            border: 1px solid #c8ecd5;
+
+            box-shadow:
+                0 5px 20px rgba(20,120,65,0.06);
+        }
+
+
+        .menu ul {
+
+            display: flex;
+
             justify-content: center;
 
-            border-radius: 50%;
+            align-items: center;
 
-            font-size: 65px;
+            gap: 4px;
+
+            list-style: none;
+
+            flex-wrap: wrap;
+        }
+
+
+        .menu a {
+
+            display: block;
+
+            text-decoration: none;
+
+            color: #557363;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            padding: 11px 17px;
+
+            border-radius: 30px;
+
+            transition: all 0.25s ease;
+        }
+
+
+        .menu a:hover {
+
+            color: #087f43;
+
+            background: #ddf8e6;
+
+            transform: translateY(-2px);
+        }
+
+
+        .menu a.active {
+
+            color: white;
 
             background:
                 linear-gradient(
                     135deg,
-                    #d9c9ff,
-                    #a9e8ff
+                    #18a45c,
+                    #087b42
                 );
 
-            border: 7px solid white;
-
             box-shadow:
-                0 15px 35px rgba(108,92,231,0.2);
-
-            animation:
-                profileFloat
-                4s
-                ease-in-out
-                infinite;
+                0 6px 16px rgba(18,155,82,0.25);
         }
 
-
-        @keyframes profileFloat {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-        }
 
 
         /* =========================
-           WELCOME
+           PROFILE
         ========================= */
 
-        .welcome {
+        .profile {
+
+            width: 120px;
+
+            height: 120px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 50%;
+
+            font-size: 55px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dcfce7,
+                    #c1f2d1
+                );
+
+            border: 6px solid white;
+
+            box-shadow:
+                0 10px 30px rgba(20,130,70,0.12);
+        }
+
+
+
+        /* =========================
+           PORTFOLIO LABEL
+        ========================= */
+
+        .label {
 
             display: inline-block;
 
-            padding: 8px 18px;
+            padding: 7px 18px;
 
             border-radius: 30px;
 
-            background: #f0ebff;
+            background: #e5f9ec;
 
-            color: #6c5ce7;
+            color: #13834b;
 
-            font-size: 13px;
+            font-size: 12px;
 
             font-weight: 700;
 
-            letter-spacing: 1px;
+            letter-spacing: 2px;
 
-            margin-bottom: 18px;
+            margin-bottom: 17px;
         }
 
 
+
         /* =========================
-           ชื่อ
+           NAME
         ========================= */
 
-        .portfolio-card h1 {
+        h1 {
 
-            font-size: 48px;
+            font-size: 52px;
 
-            line-height: 1.2;
+            line-height: 1.15;
+
+            color: #193b2b;
 
             margin-bottom: 12px;
         }
 
 
-        .portfolio-card h1 span {
+        h1 span {
 
             display: block;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #6c5ce7,
-                    #a66cff,
-                    #ff6bcb
-                );
-
-            -webkit-background-clip: text;
-
-            -webkit-text-fill-color: transparent;
+            color: #12a054;
         }
 
 
-        /* =========================
-           ชั้นเรียน
-        ========================= */
+        .student {
 
-        .portfolio-card h2 {
+            font-size: 18px;
 
-            font-size: 19px;
+            color: #638070;
 
-            font-weight: 600;
-
-            color: #666;
-
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
 
+
         /* =========================
-           รายละเอียด
+           DESCRIPTION
         ========================= */
 
         .description {
 
-            max-width: 550px;
+            max-width: 650px;
 
             margin: auto;
 
-            color: #666;
+            color: #6b8275;
 
-            font-size: 16px;
+            font-size: 15px;
 
-            line-height: 1.8;
+            line-height: 1.9;
         }
+
 
 
         /* =========================
@@ -497,232 +363,175 @@
 
         .buttons {
 
+            margin-top: 30px;
+
             display: flex;
 
             justify-content: center;
 
-            gap: 15px;
-
-            margin-top: 30px;
+            gap: 12px;
 
             flex-wrap: wrap;
         }
 
 
-        .btn {
-
-            display: inline-block;
-
-            padding: 13px 24px;
-
-            border-radius: 30px;
+        .button {
 
             text-decoration: none;
 
-            font-weight: 700;
+            padding: 12px 23px;
 
-            transition: 0.3s;
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.25s;
         }
 
 
-        .btn.primary {
+        .button-main {
 
             color: white;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #6c5ce7,
-                    #a66cff
-                );
-
-            box-shadow:
-                0 10px 25px rgba(108,92,231,0.25);
+            background: #0d9550;
         }
 
 
-        .btn.secondary {
+        .button-main:hover {
 
-            color: #6c5ce7;
+            background: #087a40;
+
+            transform: translateY(-3px);
+        }
+
+
+        .button-outline {
+
+            color: #0d9550;
 
             background: white;
 
-            border: 2px solid #e4ddff;
+            border: 1px solid #a9dfbd;
         }
 
 
-        .btn:hover {
+        .button-outline:hover {
 
-            transform: translateY(-5px);
+            background: #eafff1;
 
-            box-shadow:
-                0 12px 25px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
         }
 
-
-        /* =========================
-           ข้อมูลล่างการ์ด
-        ========================= */
-
-        .card-footer {
-
-            margin-top: 35px;
-
-            padding-top: 25px;
-
-            border-top: 1px solid #eee;
-
-            display: flex;
-
-            justify-content: center;
-
-            gap: 35px;
-
-            flex-wrap: wrap;
-        }
-
-
-        .card-footer div {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-
-            color: #666;
-
-            font-size: 14px;
-        }
-
-
-        .card-footer strong {
-
-            font-size: 18px;
-        }
 
 
         /* =========================
            FOOTER
         ========================= */
 
-        footer {
+        .footer {
 
-            text-align: center;
+            margin-top: 35px;
 
-            padding: 20px;
+            padding-top: 20px;
 
-            color: #888;
+            border-top: 1px solid #e2f1e7;
 
-            font-size: 13px;
+            color: #7a9082;
+
+            font-size: 12px;
         }
 
 
+
         /* =========================
-           TABLET / MOBILE
+           TABLET
         ========================= */
 
-        @media (max-width: 800px) {
+        @media (max-width: 700px) {
 
-            nav {
-
-                min-height: auto;
+            body {
 
                 padding: 15px;
-
-                flex-direction: column;
-
-                gap: 15px;
             }
 
 
-            .logo {
+            .card {
 
-                position: static;
+                padding:
+                    18px
+                    20px
+                    40px;
+
+                border-radius: 22px;
             }
 
 
-            nav ul {
+            .menu {
 
-                flex-wrap: wrap;
+                margin-bottom: 35px;
 
-                justify-content: center;
-
-                gap: 5px;
+                border-radius: 20px;
             }
 
 
-            nav ul li a {
+            .menu ul {
 
-                font-size: 13px;
+                gap: 2px;
+            }
+
+
+            .menu a {
+
+                font-size: 12px;
 
                 padding: 8px 10px;
             }
 
 
-            .hero {
+            h1 {
 
-                padding-top: 190px;
-            }
-
-
-            .portfolio-card {
-
-                padding: 40px 25px;
-
-                border-radius: 28px;
-            }
-
-
-            .portfolio-card h1 {
-
-                font-size: 38px;
-            }
-
-
-            .portfolio-card h2 {
-
-                font-size: 17px;
-            }
-
-
-            .image-circle {
-
-                width: 120px;
-
-                height: 120px;
-
-                font-size: 55px;
-            }
-
-
-            .card-footer {
-
-                flex-direction: column;
-
-                align-items: center;
-
-                gap: 15px;
+                font-size: 40px;
             }
 
         }
 
 
+
         /* =========================
-           โทรศัพท์เล็ก
+           PHONE
         ========================= */
 
         @media (max-width: 450px) {
 
-            .portfolio-card h1 {
+            .menu a {
 
-                font-size: 32px;
+                font-size: 11px;
+
+                padding: 7px 7px;
             }
 
 
-            .welcome {
+            .profile {
 
-                font-size: 11px;
+                width: 100px;
+
+                height: 100px;
+
+                font-size: 45px;
+            }
+
+
+            h1 {
+
+                font-size: 33px;
+            }
+
+
+            .student {
+
+                font-size: 16px;
             }
 
 
@@ -735,12 +544,14 @@
             .buttons {
 
                 flex-direction: column;
+
+                align-items: center;
             }
 
 
-            .btn {
+            .button {
 
-                width: 100%;
+                width: 85%;
             }
 
         }
@@ -753,40 +564,36 @@
 <body>
 
 
-    <!-- วงกลมตกแต่งพื้นหลัง -->
+    <!-- พื้นหลัง -->
 
-    <div class="bg-circle circle1"></div>
+    <div class="bg1"></div>
 
-    <div class="bg-circle circle2"></div>
-
-    <div class="bg-circle circle3"></div>
+    <div class="bg2"></div>
 
 
 
     <!-- =========================
-         HEADER
-    ========================== -->
+         CARD
+    ========================= -->
 
-    <header>
-
-        <nav>
-
-            <!-- Logo -->
-
-            <div class="logo">
-                PANYAWUT<span>.</span>
-            </div>
+    <div class="card">
 
 
-            <!-- เมนู 5 ลิงก์ -->
+        <!-- =====================
+             5 ลิงก์
+        ====================== -->
+
+        <nav class="menu">
 
             <ul>
 
                 <li>
-                    <a href="index.html" class="active">
+                    <a href="index.html"
+                       class="active">
                         หน้าหลัก
                     </a>
                 </li>
+
 
                 <li>
                     <a href="profile.html">
@@ -794,17 +601,20 @@
                     </a>
                 </li>
 
+
                 <li>
                     <a href="education.html">
                         การศึกษา
                     </a>
                 </li>
 
+
                 <li>
                     <a href="award.html">
                         ผลงาน/รางวัล
                     </a>
                 </li>
+
 
                 <li>
                     <a href="contact.html">
@@ -816,120 +626,97 @@
 
         </nav>
 
-    </header>
 
 
+        <!-- =====================
+             PROFILE
+        ====================== -->
 
-    <!-- =========================
-         MAIN
-    ========================== -->
+        <div class="profile">
 
-    <main class="hero">
-
-        <div class="portfolio-card">
-
-
-            <!-- รูปโปรไฟล์ -->
-
-            <div class="profile-image">
-
-                <div class="image-circle">
-                    👨‍🎓
-                </div>
-
-            </div>
-
-
-            <!-- Welcome -->
-
-            <div class="welcome">
-                ✨ WELCOME TO MY PORTFOLIO
-            </div>
-
-
-            <!-- ชื่อ -->
-
-            <h1>
-
-                ปัญญาวุฒิ
-
-                <span>
-                    ไสยศาสตร์
-                </span>
-
-            </h1>
-
-
-            <!-- ระดับชั้น -->
-
-            <h2>
-                นักเรียนชั้นมัธยมศึกษาปีที่ 6
-            </h2>
-
-
-            <!-- รายละเอียด -->
-
-            <p class="description">
-
-                ยินดีต้อนรับเข้าสู่ Portfolio ของผม
-                เว็บไซต์ที่รวบรวมประวัติส่วนตัว
-                การศึกษา ผลงาน และกิจกรรมต่าง ๆ
-
-            </p>
-
-
-            <!-- ปุ่ม -->
-
-            <div class="buttons">
-
-                <a href="profile.html" class="btn primary">
-                    👤 รู้จักผมมากขึ้น
-                </a>
-
-                <a href="award.html" class="btn secondary">
-                    🏆 ดูผลงาน
-                </a>
-
-            </div>
-
-
-            <!-- ข้อมูล -->
-
-            <div class="card-footer">
-
-                <div>
-                    <strong>🎓</strong>
-                    <span>นักเรียน ม.6</span>
-                </div>
-
-                <div>
-                    <strong>🏫</strong>
-                    <span>โรงเรียนพานทอง</span>
-                </div>
-
-                <div>
-                    <strong>💻</strong>
-                    <span>Portfolio</span>
-                </div>
-
-            </div>
-
+            👨‍🎓
 
         </div>
 
-    </main>
+
+
+        <!-- =====================
+             TITLE
+        ====================== -->
+
+        <div class="label">
+
+            MY PORTFOLIO
+
+        </div>
+
+
+        <h1>
+
+            ปัญญาวุฒิ
+
+            <span>
+                ไสยศาสตร์
+            </span>
+
+        </h1>
+
+
+        <div class="student">
+
+            นักเรียนชั้นมัธยมศึกษาปีที่ 6
+
+        </div>
+
+
+        <p class="description">
+
+            ยินดีต้อนรับเข้าสู่ Portfolio ของผม
+            เว็บไซต์นี้รวบรวมประวัติส่วนตัว
+            ประวัติการศึกษา ผลงาน รางวัล
+            และกิจกรรมต่าง ๆ ที่เคยเข้าร่วม
+
+        </p>
 
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+        <!-- =====================
+             BUTTONS
+        ====================== -->
 
-    <footer>
+        <div class="buttons">
 
-        © 2026 Panyawut Saiyasat | My Portfolio
+            <a href="profile.html"
+               class="button button-main">
 
-    </footer>
+                รู้จักผมมากขึ้น
+
+            </a>
+
+
+            <a href="award.html"
+               class="button button-outline">
+
+                ดูผลงาน
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =====================
+             FOOTER
+        ====================== -->
+
+        <div class="footer">
+
+            © 2026 Panyawut Saiyasat | My Portfolio
+
+        </div>
+
+
+    </div>
 
 
 </body>
