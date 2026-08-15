@@ -132,26 +132,14 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, "Tahoma", sans-serif;
-            min-height: 100vh;
-            background: #eef9f2;
-            color: #17452d;
-            overflow-x: hidden;
-        }
-
-       
-       /* =========================
-   พื้นหลังเขียวเข้ม + แสงไล่เฉด
-========================= */
-
-body {
+       body {
+    font-family: Arial, "Tahoma", sans-serif;
+    min-height: 100vh;
     background: #082c1b;
     color: #dff7e8;
     overflow-x: hidden;
 }
 
-/* แสงก้อนที่ 1 */
 body::before {
     content: "";
     position: fixed;
@@ -167,7 +155,6 @@ body::before {
     );
 
     border-radius: 50%;
-
     filter: blur(30px);
 
     top: -300px;
@@ -178,7 +165,6 @@ body::before {
     animation: greenGlow1 12s ease-in-out infinite alternate;
 }
 
-/* แสงก้อนที่ 2 */
 body::after {
     content: "";
     position: fixed;
@@ -194,7 +180,6 @@ body::after {
     );
 
     border-radius: 50%;
-
     filter: blur(40px);
 
     bottom: -300px;
@@ -203,6 +188,34 @@ body::after {
     z-index: -1;
 
     animation: greenGlow2 15s ease-in-out infinite alternate;
+}
+
+@keyframes greenGlow1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(180px, 120px) scale(1.15);
+    }
+
+    100% {
+        transform: translate(350px, 30px) scale(0.9);
+    }
+}
+
+@keyframes greenGlow2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-150px, -100px) scale(1.2);
+    }
+
+    100% {
+        transform: translate(-300px, 30px) scale(0.9);
+    }
 }
 
 
