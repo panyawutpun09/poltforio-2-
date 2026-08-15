@@ -1,1 +1,711 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Profile | Portfolio</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* =========================
+           พื้นหลัง
+        ========================= */
+
+        body {
+            font-family: Arial, "Tahoma", sans-serif;
+            min-height: 100vh;
+            background: #082c1b;
+            color: #17452d;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+
+            width: 700px;
+            height: 700px;
+
+            background: radial-gradient(
+                circle,
+                rgba(31, 180, 99, 0.55) 0%,
+                rgba(31, 180, 99, 0.25) 30%,
+                transparent 70%
+            );
+
+            border-radius: 50%;
+            filter: blur(30px);
+
+            top: -300px;
+            left: -200px;
+
+            z-index: -2;
+
+            animation: greenGlow1 12s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+
+            width: 650px;
+            height: 650px;
+
+            background: radial-gradient(
+                circle,
+                rgba(20, 130, 75, 0.5) 0%,
+                rgba(20, 130, 75, 0.2) 35%,
+                transparent 70%
+            );
+
+            border-radius: 50%;
+            filter: blur(40px);
+
+            bottom: -300px;
+            right: -200px;
+
+            z-index: -2;
+
+            animation: greenGlow2 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes greenGlow1 {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(180px, 120px) scale(1.15);
+            }
+
+            100% {
+                transform: translate(350px, 30px) scale(0.9);
+            }
+
+        }
+
+        @keyframes greenGlow2 {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-150px, -100px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(-300px, 30px) scale(0.9);
+            }
+
+        }
+
+        /* =========================
+           จุดแสง
+        ========================= */
+
+        .floating-lights {
+            position: fixed;
+            inset: 0;
+
+            overflow: hidden;
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        .floating-lights span {
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            background: #62c989;
+
+            border-radius: 50%;
+
+            opacity: 0.45;
+
+            box-shadow:
+                0 0 10px #62c989,
+                0 0 20px #a5e8bd;
+
+            animation: floatLight 9s infinite ease-in-out;
+        }
+
+        .floating-lights span:nth-child(1) {
+            left: 8%;
+            top: 80%;
+        }
+
+        .floating-lights span:nth-child(2) {
+            left: 18%;
+            top: 25%;
+            animation-delay: 1s;
+        }
+
+        .floating-lights span:nth-child(3) {
+            left: 35%;
+            top: 75%;
+            animation-delay: 2s;
+        }
+
+        .floating-lights span:nth-child(4) {
+            left: 50%;
+            top: 15%;
+            animation-delay: 3s;
+        }
+
+        .floating-lights span:nth-child(5) {
+            left: 68%;
+            top: 70%;
+            animation-delay: 1.5s;
+        }
+
+        .floating-lights span:nth-child(6) {
+            left: 82%;
+            top: 30%;
+            animation-delay: 2.5s;
+        }
+
+        .floating-lights span:nth-child(7) {
+            left: 90%;
+            top: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatLight {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.15;
+            }
+
+            50% {
+                transform: translate(35px, -80px) scale(1.5);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translate(-20px, -150px) scale(0.8);
+                opacity: 0.15;
+            }
+
+        }
+
+        /* =========================
+           กล่องหลัก
+        ========================= */
+
+        .container {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 20px;
+        }
+
+        .card {
+            position: relative;
+
+            width: 100%;
+            max-width: 850px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-radius: 30px;
+
+            padding: 45px;
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.25);
+
+            border: 1px solid #cce8d5;
+
+            overflow: hidden;
+        }
+
+        /* =========================
+           ใบไม้
+        ========================= */
+
+        .forest-leaves {
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+        .leaf {
+            position: absolute;
+
+            font-size: 30px;
+
+            opacity: 0.5;
+
+            filter:
+                drop-shadow(0 5px 8px rgba(0, 70, 30, 0.18));
+
+            animation: leafFloat 6s ease-in-out infinite;
+        }
+
+        .leaf:nth-child(1) {
+            top: 5%;
+            left: 3%;
+        }
+
+        .leaf:nth-child(2) {
+            top: 15%;
+            left: 8%;
+            font-size: 22px;
+            animation-delay: 1s;
+        }
+
+        .leaf:nth-child(3) {
+            top: 6%;
+            right: 4%;
+            animation-delay: 2s;
+        }
+
+        .leaf:nth-child(4) {
+            top: 20%;
+            right: 8%;
+            font-size: 23px;
+            animation-delay: 3s;
+        }
+
+        .leaf:nth-child(5) {
+            bottom: 8%;
+            left: 4%;
+            font-size: 27px;
+            animation-delay: 1.5s;
+        }
+
+        .leaf:nth-child(6) {
+            bottom: 5%;
+            right: 5%;
+            font-size: 32px;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes leafFloat {
+
+            0% {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(8deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+        }
+
+        /* =========================
+           เนื้อหาอยู่ด้านหน้า
+        ========================= */
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================
+           หัวข้อ
+        ========================= */
+
+        .tag {
+            display: inline-block;
+
+            padding: 7px 17px;
+
+            border-radius: 50px;
+
+            background: #e1f5e8;
+
+            color: #178047;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 40px;
+
+            color: #12452c;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #789486;
+
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           ส่วนโปรไฟล์
+        ========================= */
+
+        .profile-box {
+            display: flex;
+
+            align-items: center;
+
+            gap: 35px;
+
+            padding: 25px;
+
+            background: #f4fbf6;
+
+            border: 1px solid #dcefe2;
+
+            border-radius: 25px;
+
+            margin-bottom: 25px;
+        }
+
+        .profile-image {
+            width: 170px;
+            height: 170px;
+
+            flex-shrink: 0;
+
+            padding: 5px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            border: 5px solid #8dcea3;
+
+            box-shadow:
+                0 12px 30px rgba(31, 103, 65, 0.18);
+
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+        }
+
+        .profile-info {
+            text-align: left;
+        }
+
+        .profile-info h2 {
+            color: #145a35;
+
+            font-size: 27px;
+
+            margin-bottom: 8px;
+        }
+
+        .profile-info p {
+            color: #6f887a;
+
+            line-height: 1.8;
+
+            font-size: 15px;
+        }
+
+        /* =========================
+           ข้อมูลส่วนตัว
+        ========================= */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 25px;
+        }
+
+        .info-card {
+            padding: 18px;
+
+            background: white;
+
+            border: 1px solid #dcefe2;
+
+            border-radius: 18px;
+
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+
+            background: #effaf3;
+
+            border-color: #a9daba;
+
+            box-shadow:
+                0 10px 25px rgba(36, 126, 72, 0.1);
+        }
+
+        .info-card .label {
+            color: #7c9888;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+        .info-card .value {
+            color: #17452d;
+
+            font-weight: bold;
+
+            font-size: 15px;
+        }
+
+        /* =========================
+           ปุ่มกลับหน้าแรก
+        ========================= */
+
+        .back-home {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 22px;
+
+            background: #176b3c;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 14px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .back-home:hover {
+            background: #218b50;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(23, 107, 60, 0.25);
+        }
+
+        /* =========================
+           มือถือ
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            .profile-box {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .profile-info {
+                text-align: center;
+            }
+
+            .profile-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- จุดแสง -->
+    <div class="floating-lights">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <!-- ใบไม้ -->
+            <div class="forest-leaves">
+
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+
+            </div>
+
+
+            <div class="content">
+
+                <div class="tag">
+                    MY PROFILE
+                </div>
+
+                <h1>
+                    ประวัติส่วนตัว
+                </h1>
+
+                <p class="subtitle">
+                    Personal Profile
+                </p>
+
+
+                <!-- โปรไฟล์ -->
+                <div class="profile-box">
+
+                    <div class="profile-image">
+
+                        <img
+                            src="profile.jpg"
+                            alt="รูปโปรไฟล์"
+                        >
+
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <h2>
+                            ปัญญาวุฒิ ไสยศาสตร์
+                        </h2>
+
+                        <p>
+                            นักเรียนชั้นมัธยมศึกษาปีที่ 6<br>
+                            โรงเรียนพานทอง<br>
+                            ยินดีต้อนรับเข้าสู่แฟ้มสะสมผลงานของผม
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ข้อมูลส่วนตัว -->
+                <div class="info-grid">
+
+                    <div class="info-card">
+
+                        <div class="label">
+                            ชื่อ - นามสกุล
+                        </div>
+
+                        <div class="value">
+                            ปัญญาวุฒิ ไสยศาสตร์
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="label">
+                            ระดับชั้น
+                        </div>
+
+                        <div class="value">
+                            มัธยมศึกษาปีที่ 6
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="label">
+                            โรงเรียน
+                        </div>
+
+                        <div class="value">
+                            โรงเรียนพานทอง
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <div class="label">
+                            Portfolio
+                        </div>
+
+                        <div class="value">
+                            Student Portfolio
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- กลับหน้าแรก -->
+                <a
+                    href="index.html"
+                    class="back-home"
+                >
+                    ← กลับหน้าหลัก
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
