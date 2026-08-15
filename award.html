@@ -1,1 +1,896 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Awards | Portfolio</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* =========================
+           พื้นหลังสีเขียว
+        ========================= */
+
+        body {
+            font-family: Arial, "Tahoma", sans-serif;
+            min-height: 100vh;
+            background: #082c1b;
+            color: #17452d;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+
+            width: 700px;
+            height: 700px;
+
+            background: radial-gradient(
+                circle,
+                rgba(31, 180, 99, 0.55) 0%,
+                rgba(31, 180, 99, 0.25) 30%,
+                transparent 70%
+            );
+
+            border-radius: 50%;
+            filter: blur(30px);
+
+            top: -300px;
+            left: -200px;
+
+            z-index: -2;
+
+            animation: greenGlow1 12s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+
+            width: 650px;
+            height: 650px;
+
+            background: radial-gradient(
+                circle,
+                rgba(20, 130, 75, 0.5) 0%,
+                rgba(20, 130, 75, 0.2) 35%,
+                transparent 70%
+            );
+
+            border-radius: 50%;
+            filter: blur(40px);
+
+            bottom: -300px;
+            right: -200px;
+
+            z-index: -2;
+
+            animation: greenGlow2 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes greenGlow1 {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(180px, 120px) scale(1.15);
+            }
+
+            100% {
+                transform: translate(350px, 30px) scale(0.9);
+            }
+
+        }
+
+        @keyframes greenGlow2 {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-150px, -100px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(-300px, 30px) scale(0.9);
+            }
+
+        }
+
+        /* =========================
+           จุดแสงลอย
+        ========================= */
+
+        .floating-lights {
+            position: fixed;
+            inset: 0;
+
+            overflow: hidden;
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        .floating-lights span {
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            background: #62c989;
+
+            border-radius: 50%;
+
+            opacity: 0.45;
+
+            box-shadow:
+                0 0 10px #62c989,
+                0 0 20px #a5e8bd;
+
+            animation: floatLight 9s infinite ease-in-out;
+        }
+
+        .floating-lights span:nth-child(1) {
+            left: 8%;
+            top: 80%;
+        }
+
+        .floating-lights span:nth-child(2) {
+            left: 20%;
+            top: 25%;
+            animation-delay: 1s;
+        }
+
+        .floating-lights span:nth-child(3) {
+            left: 35%;
+            top: 75%;
+            animation-delay: 2s;
+        }
+
+        .floating-lights span:nth-child(4) {
+            left: 50%;
+            top: 15%;
+            animation-delay: 3s;
+        }
+
+        .floating-lights span:nth-child(5) {
+            left: 68%;
+            top: 70%;
+            animation-delay: 1.5s;
+        }
+
+        .floating-lights span:nth-child(6) {
+            left: 82%;
+            top: 30%;
+            animation-delay: 2.5s;
+        }
+
+        .floating-lights span:nth-child(7) {
+            left: 92%;
+            top: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatLight {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.15;
+            }
+
+            50% {
+                transform: translate(35px, -80px) scale(1.5);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translate(-20px, -150px) scale(0.8);
+                opacity: 0.15;
+            }
+
+        }
+
+        /* =========================
+           การ์ดหลัก
+        ========================= */
+
+        .container {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 20px;
+        }
+
+        .card {
+            position: relative;
+
+            width: 100%;
+            max-width: 900px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-radius: 30px;
+
+            padding: 45px;
+
+            border: 1px solid #cce8d5;
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.25);
+
+            overflow: hidden;
+        }
+
+        /* =========================
+           ใบไม้
+        ========================= */
+
+        .forest-leaves {
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+        .leaf {
+            position: absolute;
+
+            font-size: 30px;
+
+            opacity: 0.5;
+
+            filter:
+                drop-shadow(0 5px 8px rgba(0, 70, 30, 0.18));
+
+            animation: leafFloat 6s ease-in-out infinite;
+        }
+
+        .leaf:nth-child(1) {
+            top: 5%;
+            left: 3%;
+        }
+
+        .leaf:nth-child(2) {
+            top: 14%;
+            left: 8%;
+            font-size: 22px;
+            animation-delay: 1s;
+        }
+
+        .leaf:nth-child(3) {
+            top: 6%;
+            right: 4%;
+            animation-delay: 2s;
+        }
+
+        .leaf:nth-child(4) {
+            top: 20%;
+            right: 8%;
+            font-size: 23px;
+            animation-delay: 3s;
+        }
+
+        .leaf:nth-child(5) {
+            bottom: 8%;
+            left: 4%;
+            font-size: 27px;
+            animation-delay: 1.5s;
+        }
+
+        .leaf:nth-child(6) {
+            bottom: 5%;
+            right: 5%;
+            font-size: 32px;
+            animation-delay: 2.5s;
+        }
+
+        .leaf:nth-child(7) {
+            bottom: 20%;
+            left: 9%;
+            font-size: 21px;
+            animation-delay: 3s;
+        }
+
+        .leaf:nth-child(8) {
+            bottom: 18%;
+            right: 10%;
+            font-size: 24px;
+            animation-delay: 4s;
+        }
+
+        @keyframes leafFloat {
+
+            0% {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(8deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+        }
+
+        /* =========================
+           เนื้อหา
+        ========================= */
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================
+           หัวข้อ
+        ========================= */
+
+        .tag {
+            display: inline-block;
+
+            padding: 7px 17px;
+
+            border-radius: 50px;
+
+            background: #e1f5e8;
+
+            color: #178047;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #12452c;
+
+            font-size: 40px;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #789486;
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           รายการรางวัล
+        ========================= */
+
+        .award-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+            margin-bottom: 30px;
+        }
+
+        .award-card {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 22px;
+
+            background: #f5fbf7;
+
+            border: 1px solid #dcefe2;
+
+            border-radius: 22px;
+
+            transition: all 0.3s ease;
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+
+            background: #eaf8ef;
+
+            border-color: #9ed1ae;
+
+            box-shadow:
+                0 14px 30px rgba(36, 126, 72, 0.13);
+        }
+
+        /* =========================
+           ไอคอนรางวัล
+        ========================= */
+
+        .award-icon {
+            width: 70px;
+            height: 70px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            background: #dff4e6;
+
+            border: 1px solid #c5e6d0;
+
+            border-radius: 20px;
+
+            font-size: 32px;
+
+            transition: 0.3s;
+        }
+
+        .award-card:hover .award-icon {
+            transform: rotate(-5deg) scale(1.08);
+
+            background: #cdebd7;
+        }
+
+        /* =========================
+           รายละเอียดรางวัล
+        ========================= */
+
+        .award-info {
+            flex: 1;
+
+            text-align: left;
+        }
+
+        .award-info h2 {
+            color: #155b36;
+
+            font-size: 19px;
+
+            margin-bottom: 7px;
+        }
+
+        .award-info p {
+            color: #789486;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .award-year {
+            display: inline-block;
+
+            margin-top: 8px;
+
+            padding: 5px 11px;
+
+            background: #dff4e6;
+
+            color: #25804a;
+
+            border-radius: 50px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           กล่องผลงาน
+        ========================= */
+
+        .work-title {
+            color: #17452d;
+
+            font-size: 20px;
+
+            margin-bottom: 14px;
+        }
+
+        .work-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-bottom: 28px;
+        }
+
+        .work-box {
+            padding: 18px;
+
+            background: white;
+
+            border: 1px solid #dcefe2;
+
+            border-radius: 18px;
+
+            transition: 0.3s;
+        }
+
+        .work-box:hover {
+            transform: translateY(-4px);
+
+            background: #effaf3;
+
+            border-color: #a9daba;
+
+            box-shadow:
+                0 10px 25px rgba(36, 126, 72, 0.1);
+        }
+
+        .work-box h3 {
+            color: #19643b;
+
+            font-size: 16px;
+
+            margin-bottom: 6px;
+        }
+
+        .work-box p {
+            color: #82998b;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           ปุ่มกลับหน้าแรก
+        ========================= */
+
+        .back-home {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 22px;
+
+            background: #176b3c;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 14px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .back-home:hover {
+            background: #218b50;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(23, 107, 60, 0.25);
+        }
+
+        /* =========================
+           มือถือ
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .card {
+                padding: 30px 20px;
+
+                border-radius: 24px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .award-card {
+                align-items: flex-start;
+
+                padding: 18px;
+            }
+
+            .award-icon {
+                width: 58px;
+                height: 58px;
+
+                font-size: 26px;
+            }
+
+            .award-info h2 {
+                font-size: 17px;
+            }
+
+            .award-info p {
+                font-size: 13px;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- จุดแสง -->
+    <div class="floating-lights">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <!-- ใบไม้ -->
+            <div class="forest-leaves">
+
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+
+            </div>
+
+
+            <div class="content">
+
+                <!-- หัวข้อ -->
+
+                <div class="tag">
+                    MY AWARDS
+                </div>
+
+                <h1>
+                    ผลงานและรางวัล
+                </h1>
+
+                <p class="subtitle">
+                    Awards & Achievements
+                </p>
+
+
+                <!-- รายการรางวัล -->
+
+                <div class="award-list">
+
+
+                    <!-- รางวัลที่ 1 -->
+
+                    <div class="award-card">
+
+                        <div class="award-icon">
+                            🏆
+                        </div>
+
+                        <div class="award-info">
+
+                            <h2>
+                                รางวัล / ผลงานที่ 1
+                            </h2>
+
+                            <p>
+                                ใส่รายละเอียดเกี่ยวกับรางวัล
+                                หรือผลงานที่ได้รับตรงนี้
+                            </p>
+
+                            <span class="award-year">
+                                ปีการศึกษา 2569
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- รางวัลที่ 2 -->
+
+                    <div class="award-card">
+
+                        <div class="award-icon">
+                            🥇
+                        </div>
+
+                        <div class="award-info">
+
+                            <h2>
+                                รางวัล / ผลงานที่ 2
+                            </h2>
+
+                            <p>
+                                ใส่รายละเอียดเกี่ยวกับรางวัล
+                                หรือผลงานที่ได้รับตรงนี้
+                            </p>
+
+                            <span class="award-year">
+                                ปีการศึกษา 2569
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- รางวัลที่ 3 -->
+
+                    <div class="award-card">
+
+                        <div class="award-icon">
+                            🥈
+                        </div>
+
+                        <div class="award-info">
+
+                            <h2>
+                                รางวัล / ผลงานที่ 3
+                            </h2>
+
+                            <p>
+                                ใส่รายละเอียดเกี่ยวกับรางวัล
+                                หรือผลงานที่ได้รับตรงนี้
+                            </p>
+
+                            <span class="award-year">
+                                ปีการศึกษา 2569
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- รางวัลที่ 4 -->
+
+                    <div class="award-card">
+
+                        <div class="award-icon">
+                            ⭐
+                        </div>
+
+                        <div class="award-info">
+
+                            <h2>
+                                ผลงานที่น่าภาคภูมิใจ
+                            </h2>
+
+                            <p>
+                                สามารถใส่กิจกรรม ผลงาน
+                                หรือความสำเร็จต่าง ๆ ของคุณได้ที่นี่
+                            </p>
+
+                            <span class="award-year">
+                                Portfolio
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ผลงานเพิ่มเติม -->
+
+                <h2 class="work-title">
+                    🌱 ผลงานที่สนใจ
+                </h2>
+
+                <div class="work-grid">
+
+                    <div class="work-box">
+
+                        <h3>
+                            💻 เว็บไซต์
+                        </h3>
+
+                        <p>
+                            ผลงานการสร้างเว็บไซต์
+                            และการออกแบบ Portfolio
+                        </p>
+
+                    </div>
+
+
+                    <div class="work-box">
+
+                        <h3>
+                            🎨 การออกแบบ
+                        </h3>
+
+                        <p>
+                            ผลงานด้านกราฟิก
+                            และการออกแบบสื่อต่าง ๆ
+                        </p>
+
+                    </div>
+
+
+                    <div class="work-box">
+
+                        <h3>
+                            ⚽ กิจกรรมกีฬา
+                        </h3>
+
+                        <p>
+                            ผลงานและกิจกรรม
+                            ด้านกีฬา
+                        </p>
+
+                    </div>
+
+
+                    <div class="work-box">
+
+                        <h3>
+                            🌟 กิจกรรมโรงเรียน
+                        </h3>
+
+                        <p>
+                            กิจกรรมและผลงาน
+                            ที่เข้าร่วมภายในโรงเรียน
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- กลับหน้าแรก -->
+
+                <a
+                    href="index.html"
+                    class="back-home"
+                >
+                    ← กลับหน้าหลัก
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
