@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Portfolio | ปัญญาวุฒิ ไสยศาสตร์</title>
-
+    <title>Portfolio | M.6</title>
 
     <style>
-
-        /* =========================
-           RESET
-        ========================= */
 
         * {
             margin: 0;
@@ -23,233 +14,229 @@
             box-sizing: border-box;
         }
 
-
         body {
-
-            font-family:
-                "Segoe UI",
-                Tahoma,
-                Arial,
-                sans-serif;
-
+            font-family: Arial, "Tahoma", sans-serif;
             min-height: 100vh;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eafff1,
-                    #f8fffb
-                );
-
-            color: #193b2b;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 30px 15px;
+            background: #eef9f2;
+            color: #17452d;
+            overflow-x: hidden;
         }
 
-
         /* =========================
-           BACKGROUND
+           พื้นหลัง
         ========================= */
 
-        .bg1,
-        .bg2 {
-
+        body::before {
+            content: "";
             position: fixed;
 
+            width: 500px;
+            height: 500px;
+
+            background: #b9e8c9;
             border-radius: 50%;
 
+            filter: blur(100px);
+            opacity: 0.45;
+
+            top: -200px;
+            left: -150px;
+
             z-index: -1;
-
-            pointer-events: none;
         }
 
+        body::after {
+            content: "";
+            position: fixed;
 
-        .bg1 {
+            width: 450px;
+            height: 450px;
 
-            width: 350px;
+            background: #8fd6aa;
+            border-radius: 50%;
 
-            height: 350px;
-
-            background: #c9f7d9;
-
-            top: -150px;
-
-            left: -120px;
-        }
-
-
-        .bg2 {
-
-            width: 400px;
-
-            height: 400px;
-
-            background: #dcfae7;
+            filter: blur(110px);
+            opacity: 0.3;
 
             bottom: -180px;
-
             right: -150px;
+
+            z-index: -1;
         }
 
+        /* =========================
+           จัดการ์ดไว้ตรงกลาง
+        ========================= */
 
+        .container {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 25px;
+        }
 
         /* =========================
-           MAIN CARD
+           การ์ดหลัก
         ========================= */
 
         .card {
-
             width: 100%;
+            max-width: 650px;
 
-            max-width: 850px;
-
-            background: rgba(255,255,255,0.95);
-
-            border: 1px solid #bfe9cf;
+            background: rgba(255, 255, 255, 0.96);
 
             border-radius: 30px;
 
-            padding: 25px 45px 55px;
+            padding: 45px;
 
             text-align: center;
 
+            border: 1px solid #d7eddf;
+
             box-shadow:
-                0 25px 70px rgba(22,110,60,0.12);
-
-            animation: cardShow 0.7s ease;
+                0 25px 60px rgba(31, 91, 54, 0.12);
         }
-
-
-        @keyframes cardShow {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(30px)
-                    scale(0.98);
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
-        }
-
-
 
         /* =========================
-           MENU INSIDE CARD
+           รูปโปรไฟล์
         ========================= */
 
-        .menu {
+        .profile-photo {
+            width: 125px;
+            height: 125px;
 
-            display: flex;
+            margin: 0 auto 20px;
 
-            justify-content: center;
+            padding: 5px;
 
-            align-items: center;
+            border-radius: 50%;
 
-            margin-bottom: 45px;
+            background: #ffffff;
 
-            padding: 8px;
+            border: 4px solid #8dcea3;
+
+            box-shadow:
+                0 10px 30px rgba(31, 103, 65, 0.18);
+
+            overflow: hidden;
+
+            transition: all 0.3s ease;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            display: block;
+        }
+
+        /* เอฟเฟกต์รูปตอนเอาเมาส์ชี้ */
+
+        .profile-photo:hover {
+            transform: scale(1.06);
+
+            border-color: #43a967;
+
+            box-shadow:
+                0 15px 35px rgba(31, 103, 65, 0.25);
+        }
+
+        /* =========================
+           หัวข้อ
+        ========================= */
+
+        .small-title {
+            display: inline-block;
+
+            padding: 7px 17px;
 
             border-radius: 50px;
 
-            background: #f5fff8;
+            background: #e1f5e8;
 
-            border: 1px solid #c8ecd5;
+            color: #178047;
 
-            box-shadow:
-                0 5px 20px rgba(20,120,65,0.06);
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
         }
 
+        h1 {
+            font-size: 42px;
 
-        .menu ul {
+            color: #12452c;
+
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #789486;
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           เมนู 5 ลิงก์
+        ========================= */
+
+        .menu {
+            width: 100%;
+
+            max-width: 480px;
+
+            margin: auto;
 
             display: flex;
 
-            justify-content: center;
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        /* =========================
+           ปุ่มเมนู
+        ========================= */
+
+        .menu a {
+            text-decoration: none;
+
+            color: #17452d;
+
+            display: flex;
 
             align-items: center;
 
-            gap: 4px;
+            padding: 15px 18px;
 
-            list-style: none;
+            background: #f6fbf8;
 
-            flex-wrap: wrap;
-        }
+            border: 1px solid #e0efe5;
 
-
-        .menu a {
-
-            display: block;
-
-            text-decoration: none;
-
-            color: #557363;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            padding: 11px 17px;
-
-            border-radius: 30px;
+            border-radius: 17px;
 
             transition: all 0.25s ease;
         }
 
-
-        .menu a:hover {
-
-            color: #087f43;
-
-            background: #ddf8e6;
-
-            transform: translateY(-2px);
-        }
-
-
-        .menu a.active {
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #18a45c,
-                    #087b42
-                );
-
-            box-shadow:
-                0 6px 16px rgba(18,155,82,0.25);
-        }
-
-
-
         /* =========================
-           PROFILE
+           ไอคอน
         ========================= */
 
-        .profile {
-
-            width: 120px;
-
-            height: 120px;
-
-            margin: 0 auto 22px;
+        .icon {
+            width: 45px;
+            height: 45px;
 
             display: flex;
 
@@ -257,468 +244,325 @@
 
             align-items: center;
 
-            border-radius: 50%;
+            background: #e0f5e8;
 
-            font-size: 55px;
+            border-radius: 14px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #dcfce7,
-                    #c1f2d1
-                );
+            font-size: 21px;
 
-            border: 6px solid white;
-
-            box-shadow:
-                0 10px 30px rgba(20,130,70,0.12);
+            margin-right: 15px;
         }
 
-
-
         /* =========================
-           PORTFOLIO LABEL
+           ข้อความ
         ========================= */
 
-        .label {
+        .text {
+            text-align: left;
+        }
 
-            display: inline-block;
+        .text strong {
+            display: block;
 
-            padding: 7px 18px;
+            font-size: 16px;
 
-            border-radius: 30px;
+            font-weight: 600;
+        }
 
-            background: #e5f9ec;
+        .text span {
+            display: block;
 
-            color: #13834b;
+            color: #8aa294;
 
             font-size: 12px;
 
-            font-weight: 700;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 17px;
+            margin-top: 2px;
         }
-
-
 
         /* =========================
-           NAME
+           ลูกศร
         ========================= */
 
-        h1 {
+        .arrow {
+            margin-left: auto;
 
-            font-size: 52px;
+            font-size: 20px;
 
-            line-height: 1.15;
+            color: #58a777;
 
-            color: #193b2b;
-
-            margin-bottom: 12px;
+            transition: transform 0.25s ease;
         }
-
-
-        h1 span {
-
-            display: block;
-
-            color: #12a054;
-        }
-
-
-        .student {
-
-            font-size: 18px;
-
-            color: #638070;
-
-            margin-bottom: 22px;
-        }
-
-
 
         /* =========================
-           DESCRIPTION
+           เอฟเฟกต์เมนู
         ========================= */
 
-        .description {
+        .menu a:hover {
+            background: #e5f7eb;
 
-            max-width: 650px;
-
-            margin: auto;
-
-            color: #6b8275;
-
-            font-size: 15px;
-
-            line-height: 1.9;
-        }
-
-
-
-        /* =========================
-           BUTTON
-        ========================= */
-
-        .buttons {
-
-            margin-top: 30px;
-
-            display: flex;
-
-            justify-content: center;
-
-            gap: 12px;
-
-            flex-wrap: wrap;
-        }
-
-
-        .button {
-
-            text-decoration: none;
-
-            padding: 12px 23px;
-
-            border-radius: 10px;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            transition: 0.25s;
-        }
-
-
-        .button-main {
-
-            color: white;
-
-            background: #0d9550;
-        }
-
-
-        .button-main:hover {
-
-            background: #087a40;
+            border-color: #a9daba;
 
             transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(36, 126, 72, 0.12);
         }
 
-
-        .button-outline {
-
-            color: #0d9550;
-
-            background: white;
-
-            border: 1px solid #a9dfbd;
+        .menu a:hover .arrow {
+            transform: translateX(5px);
         }
 
+        /* หน้าหลัก */
 
-        .button-outline:hover {
+        .menu a:first-child {
+            background: #e3f6e9;
 
-            background: #eafff1;
-
-            transform: translateY(-3px);
+            border-color: #b6dfc4;
         }
-
-
 
         /* =========================
-           FOOTER
+           Footer
         ========================= */
 
         .footer {
+            margin-top: 28px;
 
-            margin-top: 35px;
+            color: #9caf9f;
 
-            padding-top: 20px;
+            font-size: 11px;
 
-            border-top: 1px solid #e2f1e7;
-
-            color: #7a9082;
-
-            font-size: 12px;
+            letter-spacing: 2px;
         }
 
-
-
         /* =========================
-           TABLET
+           มือถือ
         ========================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 600px) {
 
-            body {
-
+            .container {
                 padding: 15px;
             }
 
-
             .card {
+                padding: 35px 20px;
 
-                padding:
-                    18px
-                    20px
-                    40px;
-
-                border-radius: 22px;
+                border-radius: 24px;
             }
 
-
-            .menu {
-
-                margin-bottom: 35px;
-
-                border-radius: 20px;
+            .profile-photo {
+                width: 105px;
+                height: 105px;
             }
-
-
-            .menu ul {
-
-                gap: 2px;
-            }
-
-
-            .menu a {
-
-                font-size: 12px;
-
-                padding: 8px 10px;
-            }
-
 
             h1 {
-
-                font-size: 40px;
+                font-size: 34px;
             }
-
-        }
-
-
-
-        /* =========================
-           PHONE
-        ========================= */
-
-        @media (max-width: 450px) {
-
-            .menu a {
-
-                font-size: 11px;
-
-                padding: 7px 7px;
-            }
-
-
-            .profile {
-
-                width: 100px;
-
-                height: 100px;
-
-                font-size: 45px;
-            }
-
-
-            h1 {
-
-                font-size: 33px;
-            }
-
-
-            .student {
-
-                font-size: 16px;
-            }
-
 
             .description {
-
-                font-size: 14px;
+                font-size: 13px;
             }
 
-
-            .buttons {
-
-                flex-direction: column;
-
-                align-items: center;
+            .menu a {
+                padding: 13px;
             }
-
-
-            .button {
-
-                width: 85%;
-            }
-
         }
 
     </style>
-
 </head>
-
 
 <body>
 
+    <div class="container">
 
-    <!-- พื้นหลัง -->
+        <div class="card">
 
-    <div class="bg1"></div>
+            <!-- =========================
+                 รูปโปรไฟล์
+            ========================== -->
 
-    <div class="bg2"></div>
+            <div class="profile-photo">
 
+                <img
+                    src="profile.jpg"
+                    alt="รูปโปรไฟล์"
+                >
 
-
-    <!-- =========================
-         CARD
-    ========================= -->
-
-    <div class="card">
-
-
-        <!-- =====================
-             5 ลิงก์
-        ====================== -->
-
-        <nav class="menu">
-
-            <ul>
-
-                <li>
-                    <a href="index.html"
-                       class="active">
-                        หน้าหลัก
-                    </a>
-                </li>
+            </div>
 
 
-                <li>
-                    <a href="profile.html">
-                        ประวัติส่วนตัว
-                    </a>
-                </li>
+            <!-- =========================
+                 หัวข้อ
+            ========================== -->
+
+            <div class="small-title">
+                MY PORTFOLIO
+            </div>
+
+            <h1>
+                Portfolio
+            </h1>
+
+            <p class="description">
+                แฟ้มสะสมผลงานของนักเรียนชั้นมัธยมศึกษาปีที่ 6
+            </p>
 
 
-                <li>
-                    <a href="education.html">
-                        การศึกษา
-                    </a>
-                </li>
+            <!-- =========================
+                 เมนู 5 ลิงก์
+            ========================== -->
+
+            <div class="menu">
 
 
-                <li>
-                    <a href="award.html">
-                        ผลงาน/รางวัล
-                    </a>
-                </li>
+                <!-- 1. หน้าหลัก -->
+
+                <a href="index.html">
+
+                    <div class="icon">
+                        🏠
+                    </div>
+
+                    <div class="text">
+
+                        <strong>
+                            หน้าหลัก
+                        </strong>
+
+                        <span>
+                            Home
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </a>
 
 
-                <li>
-                    <a href="contact.html">
-                        ติดต่อ
-                    </a>
-                </li>
+                <!-- 2. Profile -->
 
-            </ul>
+                <a href="profile.html">
 
-        </nav>
+                    <div class="icon">
+                        👤
+                    </div>
+
+                    <div class="text">
+
+                        <strong>
+                            ประวัติส่วนตัว
+                        </strong>
+
+                        <span>
+                            Profile
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </a>
 
 
+                <!-- 3. Education -->
 
-        <!-- =====================
-             PROFILE
-        ====================== -->
+                <a href="education.html">
 
-        <div class="profile">
+                    <div class="icon">
+                        🎓
+                    </div>
 
-            👨‍🎓
+                    <div class="text">
+
+                        <strong>
+                            ประวัติการศึกษา
+                        </strong>
+
+                        <span>
+                            Education
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- 4. Award -->
+
+                <a href="award.html">
+
+                    <div class="icon">
+                        🏆
+                    </div>
+
+                    <div class="text">
+
+                        <strong>
+                            ผลงานและรางวัล
+                        </strong>
+
+                        <span>
+                            Awards
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- 5. Contact -->
+
+                <a href="contact.html">
+
+                    <div class="icon">
+                        ✉️
+                    </div>
+
+                    <div class="text">
+
+                        <strong>
+                            ติดต่อ
+                        </strong>
+
+                        <span>
+                            Contact
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 Footer
+            ========================== -->
+
+            <div class="footer">
+                PORTFOLIO • M.6
+            </div>
 
         </div>
-
-
-
-        <!-- =====================
-             TITLE
-        ====================== -->
-
-        <div class="label">
-
-            MY PORTFOLIO
-
-        </div>
-
-
-        <h1>
-
-            ปัญญาวุฒิ
-
-            <span>
-                ไสยศาสตร์
-            </span>
-
-        </h1>
-
-
-        <div class="student">
-
-            นักเรียนชั้นมัธยมศึกษาปีที่ 6
-
-        </div>
-
-
-        <p class="description">
-
-            ยินดีต้อนรับเข้าสู่ Portfolio ของผม
-            เว็บไซต์นี้รวบรวมประวัติส่วนตัว
-            ประวัติการศึกษา ผลงาน รางวัล
-            และกิจกรรมต่าง ๆ ที่เคยเข้าร่วม
-
-        </p>
-
-
-
-        <!-- =====================
-             BUTTONS
-        ====================== -->
-
-        <div class="buttons">
-
-            <a href="profile.html"
-               class="button button-main">
-
-                รู้จักผมมากขึ้น
-
-            </a>
-
-
-            <a href="award.html"
-               class="button button-outline">
-
-                ดูผลงาน
-
-            </a>
-
-        </div>
-
-
-
-        <!-- =====================
-             FOOTER
-        ====================== -->
-
-        <div class="footer">
-
-            © 2026 Panyawut Saiyasat | My Portfolio
-
-        </div>
-
 
     </div>
 
-
 </body>
-
 </html>
