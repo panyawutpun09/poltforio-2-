@@ -1,1 +1,853 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Contact | Portfolio</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* =========================
+           พื้นหลัง
+        ========================= */
+
+        body {
+            font-family: Arial, "Tahoma", sans-serif;
+            min-height: 100vh;
+            background: #082c1b;
+            color: #17452d;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+
+            width: 700px;
+            height: 700px;
+
+            background: radial-gradient(
+                circle,
+                rgba(31, 180, 99, 0.55) 0%,
+                rgba(31, 180, 99, 0.25) 30%,
+                transparent 70%
+            );
+
+            border-radius: 50%;
+            filter: blur(30px);
+
+            top: -300px;
+            left: -200px;
+
+            z-index: -2;
+
+            animation: greenGlow1 12s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+
+            width: 650px;
+            height: 650px;
+
+            background: radial-gradient(
+                circle,
+                rgba(20, 130, 75, 0.5) 0%,
+                rgba(20, 130, 75, 0.2) 35%,
+                transparent 70%
+            );
+
+            border-radius: 50%;
+            filter: blur(40px);
+
+            bottom: -300px;
+            right: -200px;
+
+            z-index: -2;
+
+            animation: greenGlow2 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes greenGlow1 {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(180px, 120px) scale(1.15);
+            }
+
+            100% {
+                transform: translate(350px, 30px) scale(0.9);
+            }
+
+        }
+
+        @keyframes greenGlow2 {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-150px, -100px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(-300px, 30px) scale(0.9);
+            }
+
+        }
+
+        /* =========================
+           จุดแสงลอย
+        ========================= */
+
+        .floating-lights {
+            position: fixed;
+            inset: 0;
+
+            overflow: hidden;
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        .floating-lights span {
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            background: #62c989;
+
+            border-radius: 50%;
+
+            opacity: 0.45;
+
+            box-shadow:
+                0 0 10px #62c989,
+                0 0 20px #a5e8bd;
+
+            animation: floatLight 9s infinite ease-in-out;
+        }
+
+        .floating-lights span:nth-child(1) {
+            left: 8%;
+            top: 80%;
+        }
+
+        .floating-lights span:nth-child(2) {
+            left: 20%;
+            top: 25%;
+            animation-delay: 1s;
+        }
+
+        .floating-lights span:nth-child(3) {
+            left: 35%;
+            top: 75%;
+            animation-delay: 2s;
+        }
+
+        .floating-lights span:nth-child(4) {
+            left: 50%;
+            top: 15%;
+            animation-delay: 3s;
+        }
+
+        .floating-lights span:nth-child(5) {
+            left: 68%;
+            top: 70%;
+            animation-delay: 1.5s;
+        }
+
+        .floating-lights span:nth-child(6) {
+            left: 82%;
+            top: 30%;
+            animation-delay: 2.5s;
+        }
+
+        .floating-lights span:nth-child(7) {
+            left: 92%;
+            top: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatLight {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.15;
+            }
+
+            50% {
+                transform: translate(35px, -80px) scale(1.5);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translate(-20px, -150px) scale(0.8);
+                opacity: 0.15;
+            }
+
+        }
+
+        /* =========================
+           จัดกลาง
+        ========================= */
+
+        .container {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 20px;
+        }
+
+        /* =========================
+           การ์ด
+        ========================= */
+
+        .card {
+            position: relative;
+
+            width: 100%;
+            max-width: 850px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-radius: 30px;
+
+            padding: 45px;
+
+            border: 1px solid #cce8d5;
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.25);
+
+            overflow: hidden;
+        }
+
+        /* =========================
+           ใบไม้
+        ========================= */
+
+        .forest-leaves {
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+        .leaf {
+            position: absolute;
+
+            font-size: 30px;
+
+            opacity: 0.5;
+
+            filter:
+                drop-shadow(0 5px 8px rgba(0, 70, 30, 0.18));
+
+            animation: leafFloat 6s ease-in-out infinite;
+        }
+
+        .leaf:nth-child(1) {
+            top: 5%;
+            left: 3%;
+        }
+
+        .leaf:nth-child(2) {
+            top: 14%;
+            left: 8%;
+            font-size: 22px;
+            animation-delay: 1s;
+        }
+
+        .leaf:nth-child(3) {
+            top: 6%;
+            right: 4%;
+            animation-delay: 2s;
+        }
+
+        .leaf:nth-child(4) {
+            top: 20%;
+            right: 8%;
+            font-size: 23px;
+            animation-delay: 3s;
+        }
+
+        .leaf:nth-child(5) {
+            bottom: 8%;
+            left: 4%;
+            font-size: 27px;
+            animation-delay: 1.5s;
+        }
+
+        .leaf:nth-child(6) {
+            bottom: 5%;
+            right: 5%;
+            font-size: 32px;
+            animation-delay: 2.5s;
+        }
+
+        .leaf:nth-child(7) {
+            bottom: 20%;
+            left: 9%;
+            font-size: 21px;
+            animation-delay: 3s;
+        }
+
+        .leaf:nth-child(8) {
+            bottom: 18%;
+            right: 10%;
+            font-size: 24px;
+            animation-delay: 4s;
+        }
+
+        @keyframes leafFloat {
+
+            0% {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(8deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(-10deg);
+            }
+
+        }
+
+        /* =========================
+           เนื้อหา
+        ========================= */
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================
+           หัวข้อ
+        ========================= */
+
+        .tag {
+            display: inline-block;
+
+            padding: 7px 17px;
+
+            border-radius: 50px;
+
+            background: #e1f5e8;
+
+            color: #178047;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #12452c;
+
+            font-size: 40px;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #789486;
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           ช่องทางติดต่อ
+        ========================= */
+
+        .contact-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding: 20px;
+
+            background: #f5fbf7;
+
+            border: 1px solid #dcefe2;
+
+            border-radius: 20px;
+
+            text-decoration: none;
+
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+
+            background: #eaf8ef;
+
+            border-color: #9ed1ae;
+
+            box-shadow:
+                0 12px 28px rgba(36, 126, 72, 0.13);
+        }
+
+        /* =========================
+           ไอคอน
+        ========================= */
+
+        .contact-icon {
+            width: 58px;
+            height: 58px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            background: #dff4e6;
+
+            border: 1px solid #c5e6d0;
+
+            border-radius: 17px;
+
+            font-size: 27px;
+
+            transition: 0.3s;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.08) rotate(-4deg);
+
+            background: #cdebd7;
+        }
+
+        /* =========================
+           ข้อมูล
+        ========================= */
+
+        .contact-info {
+            flex: 1;
+
+            text-align: left;
+        }
+
+        .contact-info strong {
+            display: block;
+
+            color: #155b36;
+
+            font-size: 17px;
+
+            margin-bottom: 4px;
+        }
+
+        .contact-info span {
+            color: #789486;
+
+            font-size: 13px;
+        }
+
+        .contact-arrow {
+            color: #58a777;
+
+            font-size: 22px;
+
+            transition: 0.3s;
+        }
+
+        .contact-item:hover .contact-arrow {
+            transform: translateX(5px);
+        }
+
+        /* =========================
+           ข้อความท้าย
+        ========================= */
+
+        .message-box {
+            padding: 20px;
+
+            background: #edf9f1;
+
+            border: 1px solid #d5ebdc;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        .message-box h2 {
+            color: #17633a;
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .message-box p {
+            color: #789486;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           ปุ่มกลับ
+        ========================= */
+
+        .back-home {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 22px;
+
+            background: #176b3c;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 14px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .back-home:hover {
+            background: #218b50;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(23, 107, 60, 0.25);
+        }
+
+        /* =========================
+           มือถือ
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .card {
+                padding: 30px 20px;
+
+                border-radius: 24px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .contact-item {
+                padding: 16px;
+
+                gap: 12px;
+            }
+
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+
+                font-size: 23px;
+            }
+
+            .contact-info strong {
+                font-size: 15px;
+            }
+
+            .contact-info span {
+                font-size: 12px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- จุดแสง -->
+    <div class="floating-lights">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <!-- ใบไม้ -->
+            <div class="forest-leaves">
+
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+                <div class="leaf">🌿</div>
+                <div class="leaf">🍃</div>
+
+            </div>
+
+
+            <div class="content">
+
+                <!-- หัวข้อ -->
+
+                <div class="tag">
+                    CONTACT ME
+                </div>
+
+                <h1>
+                    ติดต่อ
+                </h1>
+
+                <p class="subtitle">
+                    Contact Information
+                </p>
+
+
+                <!-- ช่องทางติดต่อ -->
+
+                <div class="contact-list">
+
+
+                    <!-- Facebook -->
+
+                    <a
+                        href="#"
+                        class="contact-item"
+                    >
+
+                        <div class="contact-icon">
+                            📘
+                        </div>
+
+                        <div class="contact-info">
+
+                            <strong>
+                                Facebook
+                            </strong>
+
+                            <span>
+                                ใส่ชื่อ Facebook ของคุณ
+                            </span>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+
+                    <!-- Instagram -->
+
+                    <a
+                        href="#"
+                        class="contact-item"
+                    >
+
+                        <div class="contact-icon">
+                            📷
+                        </div>
+
+                        <div class="contact-info">
+
+                            <strong>
+                                Instagram
+                            </strong>
+
+                            <span>
+                                ใส่ชื่อ Instagram ของคุณ
+                            </span>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+
+                    <!-- Email -->
+
+                    <a
+                        href="mailto:example@gmail.com"
+                        class="contact-item"
+                    >
+
+                        <div class="contact-icon">
+                            ✉️
+                        </div>
+
+                        <div class="contact-info">
+
+                            <strong>
+                                Email
+                            </strong>
+
+                            <span>
+                                example@gmail.com
+                            </span>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+
+                    <!-- โทรศัพท์ -->
+
+                    <a
+                        href="tel:0000000000"
+                        class="contact-item"
+                    >
+
+                        <div class="contact-icon">
+                            📱
+                        </div>
+
+                        <div class="contact-info">
+
+                            <strong>
+                                โทรศัพท์
+                            </strong>
+
+                            <span>
+                                000-000-0000
+                            </span>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+
+                    <!-- GitHub -->
+
+                    <a
+                        href="#"
+                        class="contact-item"
+                    >
+
+                        <div class="contact-icon">
+                            💻
+                        </div>
+
+                        <div class="contact-info">
+
+                            <strong>
+                                GitHub
+                            </strong>
+
+                            <span>
+                                GitHub Portfolio
+                            </span>
+
+                        </div>
+
+                        <div class="contact-arrow">
+                            →
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- ข้อความ -->
+
+                <div class="message-box">
+
+                    <h2>
+                        🌿 ขอบคุณที่เข้าชม Portfolio
+                    </h2>
+
+                    <p>
+                        หากสนใจหรืออยากติดต่อ สามารถเลือกช่องทาง
+                        ด้านบนเพื่อพูดคุยกับผมได้เลยครับ
+                    </p>
+
+                </div>
+
+
+                <!-- กลับหน้าหลัก -->
+
+                <a
+                    href="index.html"
+                    class="back-home"
+                >
+                    ← กลับหน้าหลัก
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
