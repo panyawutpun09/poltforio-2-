@@ -8,6 +8,124 @@
 
     <style>
 
+   /* =========================
+   จุดแสงลอยในพื้นหลัง
+========================= */
+
+.floating-lights {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-lights span {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    background: #62c989;
+    border-radius: 50%;
+
+    opacity: 0.45;
+
+    box-shadow:
+        0 0 10px #62c989,
+        0 0 20px #a5e8bd;
+
+    animation: floatLight 8s infinite ease-in-out;
+}
+
+/* ตำแหน่งแต่ละจุด */
+
+.floating-lights span:nth-child(1) {
+    left: 10%;
+    top: 80%;
+    animation-duration: 9s;
+}
+
+.floating-lights span:nth-child(2) {
+    left: 20%;
+    top: 30%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
+
+.floating-lights span:nth-child(3) {
+    left: 35%;
+    top: 75%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.floating-lights span:nth-child(4) {
+    left: 50%;
+    top: 20%;
+    animation-duration: 13s;
+    animation-delay: 3s;
+}
+
+.floating-lights span:nth-child(5) {
+    left: 65%;
+    top: 70%;
+    animation-duration: 11s;
+    animation-delay: 1.5s;
+}
+
+.floating-lights span:nth-child(6) {
+    left: 75%;
+    top: 35%;
+    animation-duration: 9s;
+    animation-delay: 2.5s;
+}
+
+.floating-lights span:nth-child(7) {
+    left: 88%;
+    top: 80%;
+    animation-duration: 12s;
+    animation-delay: 4s;
+}
+
+.floating-lights span:nth-child(8) {
+    left: 92%;
+    top: 15%;
+    animation-duration: 10s;
+    animation-delay: 1s;
+}
+
+
+/* Animation */
+
+@keyframes floatLight {
+
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.2;
+    }
+
+    25% {
+        transform: translate(35px, -45px) scale(1.4);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(-25px, -90px) scale(0.8);
+        opacity: 0.3;
+    }
+
+    75% {
+        transform: translate(45px, -130px) scale(1.2);
+        opacity: 0.55;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.2;
+    }
+
+}     
         * {
             margin: 0;
             padding: 0;
@@ -372,7 +490,16 @@
 </head>
 
 <body>
-
+<div class="floating-lights">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
     <div class="container">
 
         <div class="card">
