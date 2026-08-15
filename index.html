@@ -95,6 +95,105 @@
     animation-delay: 1s;
 }
 
+  /* =========================
+   ใบไม้ในป่า 🌿
+========================= */
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ใบไม้ทั้งหมด */
+.forest-leaves {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ใบไม้แต่ละใบ */
+.leaf {
+    position: absolute;
+    font-size: 30px;
+    opacity: 0.55;
+
+    filter: drop-shadow(0 5px 8px rgba(0, 70, 30, 0.18));
+
+    animation: leafFloat 6s ease-in-out infinite;
+}
+
+/* ตำแหน่งใบไม้ */
+
+.leaf:nth-child(1) {
+    top: 8%;
+    left: 4%;
+    transform: rotate(-25deg);
+}
+
+.leaf:nth-child(2) {
+    top: 18%;
+    left: 10%;
+    font-size: 22px;
+    animation-delay: 1s;
+}
+
+.leaf:nth-child(3) {
+    top: 5%;
+    right: 5%;
+    transform: rotate(30deg);
+    animation-delay: 2s;
+}
+
+.leaf:nth-child(4) {
+    top: 22%;
+    right: 8%;
+    font-size: 24px;
+    animation-delay: 3s;
+}
+
+.leaf:nth-child(5) {
+    bottom: 12%;
+    left: 5%;
+    font-size: 27px;
+    animation-delay: 1.5s;
+}
+
+.leaf:nth-child(6) {
+    bottom: 5%;
+    left: 13%;
+    font-size: 21px;
+    animation-delay: 2.5s;
+}
+
+.leaf:nth-child(7) {
+    bottom: 10%;
+    right: 5%;
+    font-size: 32px;
+    animation-delay: 3.5s;
+}
+
+.leaf:nth-child(8) {
+    bottom: 22%;
+    right: 11%;
+    font-size: 23px;
+    animation-delay: 4s;
+}
+
+/* ใบไม้ลอยเบา ๆ */
+
+@keyframes leafFloat {
+
+    0%, 100% {
+        margin-top: 0;
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        margin-top: -10px;
+        transform: rotate(8deg);
+    }
+}      
 
 /* Animation */
 
@@ -131,7 +230,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+.card > *:not(.forest-leaves) {
+    position: relative;
+    z-index: 2;
+}
+        
        body {
     font-family: Arial, "Tahoma", sans-serif;
     min-height: 100vh;
@@ -543,6 +646,19 @@ body::after {
     <div class="container">
 
         <div class="card">
+<div class="forest-leaves">
+
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍃</div>
+
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍃</div>
+    <div class="leaf">🌿</div>
+    <div class="leaf">🍃</div>
+
+</div>            
 
             <!-- =========================
                  รูปโปรไฟล์
